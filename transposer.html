@@ -1,0 +1,92 @@
+<html>
+<head>
+	<title>Bansuri Notes Transposer</title>
+	<link rel="stylesheet" type="text/css" href="transposer.css">
+	<link href="https://fonts.googleapis.com/css?family=BioRhyme:300,400,700" rel="stylesheet">
+</head>
+<body>
+	<div>
+		<table id="tblHigherOctave" class="clsOctaves">
+			<tr>
+				<td>S</td>
+				<td>r</td>
+				<td>R</td>
+				<td>g</td>
+				<td>G</td>
+				<td>M</td>
+				<td>m</td>
+			</tr>
+		</table>
+		<table id="tblNormalOctave" class="clsOctaves">
+			<tr>
+				<td>S</td>
+				<td>r</td>
+				<td>R</td>
+				<td>g</td>
+				<td>G</td>
+				<td>M</td>
+				<td>m</td>
+				<td>P</td>
+				<td>d</td>
+				<td>D</td>
+				<td>n</td>
+				<td>N</td>
+			</tr>
+		</table>
+		<table id="tblLowerOctave" class="clsOctaves">
+			<tr>
+				<td>P</td>
+				<td>d</td>
+				<td>D</td>
+				<td>n</td>
+				<td>N</td>
+			</tr>
+		</table>
+	</div>
+	<div class="brDiv">
+
+	</div>
+
+	<span class="clsNonNotesObjs" id="spanInput">
+		<textarea name="textarea" id="txtAreaInput" rows="5" cols="50" placeholder="Edit the Selected Notes Here..."></textarea>
+	</span>
+
+	<span id="spanPitchSelector">
+		<select name="select">
+		  <option value="-5">-5</option> 
+		  <option value="-4">-4</option> 
+		  <option value="-3">-3</option> 
+		  <option value="-2">-2</option> 
+		  <option value="-1">-1</option> 
+		  <option value="0" selected>Select Pitch</option>
+		  <option value="+1">+1</option>
+		  <option value="+2">+2</option>
+		  <option value="+3">+3</option>
+		  <option value="+4">+4</option>
+		  <option value="+5">+5</option>
+		</select>
+	</span>
+
+	<div class="brDiv">
+
+	</div>	
+
+	<div id="divBtn">
+		<button id="btnTranspose">Transpose</button>
+	</div>
+
+	<div class="clsNonNotesObjs" id="divSelectedNotes">
+		<p>Selected Notes: </p>
+	</div>
+
+	<div class="clsNonNotesObjs" id="divTransposedNotes">
+		<p>Transposed Notes: </p>
+	</div>
+	
+	<script type="text/javascript" src="transposer.js"></script>
+	<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+</body>
+</html>
