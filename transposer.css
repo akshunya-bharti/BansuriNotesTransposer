@@ -1,0 +1,64 @@
+#tblHigherOctave{
+	font-weight: 300;
+}
+
+#tblNormalOctave{
+	font-weight: 400;
+}
+
+#tblLowerOctave{
+	font-weight: 700;
+}	
+
+
+
+#tblHigherOctave td{
+	color: #f0de2e;
+}
+
+#tblNormalOctave td{
+	color: #bf2424;
+}
+
+#tblLowerOctave td{
+	color: #2d22a5;
+}
+
+.clsOctaves{
+	margin-left: auto; 
+	margin-right: auto;
+	font-size: 50px;
+	cursor: pointer;
+}
+
+td{
+	border: 2px solid #eae7b6;
+	font-family: BioRhyme;
+}
+
+#spanPitchSelector{
+	margin-left: 7.5%;	
+}
+
+.clsNonNotesObjs{
+	margin-left: 5%;
+}
+
+#btnTranspose{
+	margin-left: 25%;
+	width: 9.8%;
+	height: 5%;
+}
+
+#output{
+	margin-left: 10%;
+}
+
+.brDiv{
+	width: 100%;
+    padding-bottom: 2%;
+}
+
+textarea{
+	resize: none;
+}
