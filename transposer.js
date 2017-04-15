@@ -1,11 +1,13 @@
 var tblHigherOctave = document.getElementById("tblHigherOctave");
 var tblNormalOctave = document.getElementById("tblNormalOctave");
 var tblLowerOctave = document.getElementById("tblLowerOctave");
-var selectedNotesPara = document.querySelector("p");
+var divSelectedNotes = document.getElementById("divSelectedNotes");
+var paraSelectedNotes = document.getElementById("paraSelectedNotes");
 var txtAreaInput = document.getElementById("txtAreaInput");
 var btnTranspose = document.getElementById("btnTranspose");
 var btnClear = document.getElementById("btnClear");
 var btnClearAll = document.getElementById("btnClearAll");
+var selectPitch = document.getElementById("selectPitch");
 
 
 
@@ -47,8 +49,8 @@ function addToTextArea(tableCell,octaveIdentifier) {
 
 btnTranspose.onclick = function(){
 	var textToPrint = txtAreaInput.value;
-	selectedNotesPara.innerText = "Selected Notes: ";
-	selectedNotesPara.innerText += textToPrint;
+	paraSelectedNotes.innerText = "";
+	paraSelectedNotes.innerText += textToPrint;
 	transposer(textToPrint);
 }
 
@@ -64,43 +66,39 @@ btnClearAll.onclick = function(){
 }
 
 function transposer(selectedNotes){
-	var regExpHigher = /[SrRgGMm]\^/g;
-	var regExpNormal = /[SrRgGMmPdDnN]\-/g;
-	var regExpLower = /[PdDnN]\_/g;
+	console.log(selectPitch.value);
+	
+	var regExpHigher = /[SrRgGMm]\^/;
+	var regExpNormal = /[SrRgGMmPdDnN]\-/;
+	var regExpLower = /[PdDnN]\_/;
 	var match, matches = [];
+	var modifiedDivSelectedNotes="<p class=\"clsOutputNotes\" id=\"paraSelectedNotes\">Selected Notes: ";
 
 	for(var i=0; i<selectedNotes.length; i+=2){
+
+		//SELECTED NOTES
+
 		var note=selectedNotes.substring(i,i+2);
-		var isHigherNote = Boolean((regExpHigher.exec(note)) != null);
-		var isNormalNote = Boolean((regExpNormal.exec(note)) != null);
-		var isLowerNote = Boolean((regExpLower.exec(note)) != null);
 
-		console.log(note);
+		
+		var isHigherNote = regExpHigher.test(note);
+		var isNormalNote = regExpNormal.test(note);
+		var isLowerNote =  regExpLower.test(note); 
 
-
-		// var matchOrNot = (vrbl === true ? "Match" : "Not a Match");
-		// console.log(matchOrNot);
-
+		var noteWithoutOctave = note.substring(0,1);
+		
 		if(isHigherNote){
-			console.log("Higher");
+			modifiedDivSelectedNotes += "<span class=\"clsHigherNote\">"+noteWithoutOctave+"</span>";
 		}
 		else if(isNormalNote){
-			console.log("Normal");
+			modifiedDivSelectedNotes += "<span class=\"clsNormalNote\">"+noteWithoutOctave+"</span>";
 		}
 		else if(isLowerNote){
-			console.log("Lower");
+			modifiedDivSelectedNotes += "<span class=\"clsLowerNote\">"+noteWithoutOctave+"</span>";
 		}
-
-		isLowerNote=false;
-		isNormalNote=false;
-		isHigherNote=false;
 	}
 
-
-	// while ((match = regExpHigher.exec(selectedNotes)) != null) {
-	//   matches.push(match[0]);
-	//   console.log(match[0]);
-	// }
-
-	// console.log(matches);
+	modifiedDivSelectedNotes+="</p>";
+	divSelectedNotes.innerHTML=modifiedDivSelectedNotes;
+	console.log(modifiedDivSelectedNotes);
 }

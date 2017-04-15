@@ -10,10 +10,20 @@
 	font-weight: 700;
 }	
 
+.clsHigherNote{
+	color: #0d561a;
+}
 
+.clsNormalNote{
+	color: #bf2424;
+}
+
+.clsLowerNote{
+	color: #2d22a5;
+}
 
 #tblHigherOctave td{
-	color: #f0de2e;
+	color: #0d561a;
 }
 
 #tblNormalOctave td{
@@ -59,6 +69,11 @@ td:hover {
 	margin-left: 10%;
 }
 
+.clsOutputNotes{
+	font-family: BioRhyme;
+	font-size: 40px;
+}
+
 .brDiv{
 	width: 100%;
     padding-bottom: 2%;
@@ -68,14 +83,9 @@ textarea{
 	resize: none;
 }
 
-.clsHigherNote{
-	color: #f0de2e;
-}
-
-.clsNormalNote{
-	color: #bf2424;
-}
-
-.clsLowerNote{
-	color: #2d22a5;
+body{
+	/*background-color: #eaf7f6;*/
+	/*opacity: 0.8;*/
+	background-image : no-repeat;
+	 background-size:     cover;  
 }

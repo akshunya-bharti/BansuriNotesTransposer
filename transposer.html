@@ -4,7 +4,7 @@
 	<link rel="stylesheet" type="text/css" href="transposer.css">
 	<link href="https://fonts.googleapis.com/css?family=BioRhyme:300,400,700" rel="stylesheet">
 </head>
-<body>
+<body background="http://templatemints.com/rttheme13/images/background_images/abstract_background7.jpg">
 	<div>
 		<table id="tblHigherOctave" class="clsOctaves">
 			<tr>
@@ -52,7 +52,7 @@
 	</span>
 
 	<span id="spanPitchSelector">
-		<select name="select">
+		<select id="selectPitch" name="select">
 		  <option value="-5">-5</option> 
 		  <option value="-4">-4</option> 
 		  <option value="-3">-3</option> 
@@ -90,11 +90,11 @@
 	</div>
 
 	<div class="clsNonNotesObjs" id="divSelectedNotes">
-		<p>Selected Notes: </p>
+		<p class="clsOutputNotes" id="paraSelectedNotes">Selected Notes: </p>
 	</div>
 
-	<div class="clsNonNotesObjs" id="divTransposedNotes">
-		<p>Transposed Notes: </p>
+	<div class="clsNonNotesObjs" class="clsOutputNotes" id="divTransposedNotes">
+		<p class="clsOutputNotes">Transposed Notes: </p>
 	</div>
 	
 	<script type="text/javascript" src="transposer.js"></script>
