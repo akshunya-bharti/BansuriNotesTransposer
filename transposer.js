@@ -3,6 +3,9 @@ var tblNormalOctave = document.getElementById("tblNormalOctave");
 var tblLowerOctave = document.getElementById("tblLowerOctave");
 var selectedNotesPara = document.querySelector("p");
 var txtAreaInput = document.getElementById("txtAreaInput");
+var btnTranspose = document.getElementById("btnTranspose");
+var btnClear = document.getElementById("btnClear");
+var btnClearAll = document.getElementById("btnClearAll");
 
 
 
@@ -49,6 +52,16 @@ btnTranspose.onclick = function(){
 	transposer(textToPrint);
 }
 
+
+btnClear.onclick = function(){
+	var textToPrint = txtAreaInput.value;
+	textToPrint = textToPrint.substring(0,textToPrint.length-2);
+	txtAreaInput.value = textToPrint;
+}
+
+btnClearAll.onclick = function(){
+	txtAreaInput.value="";
+}
 
 function transposer(selectedNotes){
 	var regExpHigher = /[SrRgGMm]\^/g;
