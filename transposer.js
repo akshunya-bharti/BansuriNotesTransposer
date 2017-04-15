@@ -2,6 +2,7 @@ var tblHigherOctave = document.getElementById("tblHigherOctave");
 var tblNormalOctave = document.getElementById("tblNormalOctave");
 var tblLowerOctave = document.getElementById("tblLowerOctave");
 var divSelectedNotes = document.getElementById("divSelectedNotes");
+var divTransposedNotes = document.getElementById("divTransposedNotes");
 var paraSelectedNotes = document.getElementById("paraSelectedNotes");
 var txtAreaInput = document.getElementById("txtAreaInput");
 var btnTranspose = document.getElementById("btnTranspose");
@@ -66,39 +67,62 @@ btnClearAll.onclick = function(){
 }
 
 function transposer(selectedNotes){
-	console.log(selectPitch.value);
-	
 	var regExpHigher = /[SrRgGMm]\^/;
 	var regExpNormal = /[SrRgGMmPdDnN]\-/;
 	var regExpLower = /[PdDnN]\_/;
-	var match, matches = [];
+	var notesArray = ['P_','d_','D_','n_','N_','S-','r-','R-','g-','G-','M-','m-','P-','d-','D-','n-','N-','S^','r^','R^','g^','G^','M^','m^'];
+
 	var modifiedDivSelectedNotes="<p class=\"clsOutputNotes\" id=\"paraSelectedNotes\">Selected Notes: ";
+	var modifiedDivTransposedNotes="<p class=\"clsOutputNotes\" id=\"paraTransposedNotes\">Transposed Notes: ";
 
 	for(var i=0; i<selectedNotes.length; i+=2){
 
 		//SELECTED NOTES
 
 		var note=selectedNotes.substring(i,i+2);
-
 		
 		var isHigherNote = regExpHigher.test(note);
 		var isNormalNote = regExpNormal.test(note);
 		var isLowerNote =  regExpLower.test(note); 
-
-		var noteWithoutOctave = note.substring(0,1);
 		
 		if(isHigherNote){
-			modifiedDivSelectedNotes += "<span class=\"clsHigherNote\">"+noteWithoutOctave+"</span>";
+			modifiedDivSelectedNotes += "<span class=\"clsHigherNote\">"+note.substring(0,1)+"</span>";
 		}
 		else if(isNormalNote){
-			modifiedDivSelectedNotes += "<span class=\"clsNormalNote\">"+noteWithoutOctave+"</span>";
+			modifiedDivSelectedNotes += "<span class=\"clsNormalNote\">"+note.substring(0,1)+"</span>";
 		}
 		else if(isLowerNote){
-			modifiedDivSelectedNotes += "<span class=\"clsLowerNote\">"+noteWithoutOctave+"</span>";
+			modifiedDivSelectedNotes += "<span class=\"clsLowerNote\">"+note.substring(0,1)+"</span>";
+		}
+
+		//TRANSPOSED NOTES
+		var position = parseInt(notesArray.indexOf(note));
+		var pitch = parseInt(selectPitch.value);
+		var noteTransposed = notesArray[position+pitch];
+		
+		isHigherNote = regExpHigher.test(noteTransposed);
+		isNormalNote = regExpNormal.test(noteTransposed);
+		isLowerNote =  regExpLower.test(noteTransposed); 
+
+		if(isHigherNote){
+			modifiedDivTransposedNotes += "<span class=\"clsHigherNote\">"+noteTransposed.substring(0,1);+"</span>";
+		}
+		else if(isNormalNote){
+			modifiedDivTransposedNotes += "<span class=\"clsNormalNote\">"+noteTransposed.substring(0,1);+"</span>";
+		}
+		else if(isLowerNote){
+			modifiedDivTransposedNotes += "<span class=\"clsLowerNote\">"+noteTransposed.substring(0,1);+"</span>";
+		}
+		else if(noteTransposed == null){
+			alert("Some notes are being transposed out of range!");
+			modifiedDivSelectedNotes="<p class=\"clsOutputNotes\" id=\"paraSelectedNotes\">Selected Notes: ";
+			modifiedDivTransposedNotes="<p class=\"clsOutputNotes\" id=\"paraTransposedNotes\">Transposed Notes: ";
+			break;
 		}
 	}
 
 	modifiedDivSelectedNotes+="</p>";
+	modifiedDivTransposedNotes+="</p>";
 	divSelectedNotes.innerHTML=modifiedDivSelectedNotes;
-	console.log(modifiedDivSelectedNotes);
+	divTransposedNotes.innerHTML=modifiedDivTransposedNotes;
 }
